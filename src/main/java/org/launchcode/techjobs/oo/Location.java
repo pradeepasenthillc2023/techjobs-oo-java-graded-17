@@ -16,8 +16,15 @@ public class Location {
     // TODO: Add a constructor that takes a string as a parameter and assigns it to the 'value' field. The
     //  constructor should also call the empty constructor in order to initialize the 'id' field.
 
+    public Location(String value) {
+        this.value = value;
+    }
 
-    // Custom toString, equals, and hashCode methods:
+    public Location(int id) {
+        this();
+        this.id = id;
+    }
+// Custom toString, equals, and hashCode methods:
 
     @Override
     public String toString() {
