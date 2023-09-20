@@ -26,7 +26,28 @@ public class JobTest {
         Assert.assertEquals("Core Competency should have value 'Persistence'","Persistence", job.getCoreCompetency().getValue());
     }
 
+    @Test
+    public void testJobsForEquality() {
+        // Generate two Job objects with identical field values except for id
+        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
+        // Test that equals returns false
+        Assert.assertFalse("Jobs with different IDs should not be equal", job1.equals(job2));
+    }
+    @Test
+    public void testToStringFormat() {
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        String expectedString = "\nID: " + job.getId() +
+                "\nName: Product tester" +
+                "\nEmployer: ACME" +
+                "\nLocation: Desert" +
+                "\nPosition Type: Quality control" +
+                "\nCore Competency: Persistence\n";
+
+        Assert.assertEquals(expectedString, job.toString());
+    }
 
 }
 
