@@ -5,7 +5,7 @@ public class JobTest {
     //TODO: Create your unit tests here
     @Test
     public void emptyTest(){
-        Assert.assertEquals(true, true);
+        Assert.assertEquals(true,  true);
     }
     @Test
     public void testSettingJobId(){
