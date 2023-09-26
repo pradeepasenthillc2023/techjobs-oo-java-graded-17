@@ -26,27 +26,53 @@ public class JobTest {
         Assert.assertEquals("Core Competency should have value 'Persistence'","Persistence", job.getCoreCompetency().getValue());
     }
 
-    @Test
-    public void testJobsForEquality() {
-        // Generate two Job objects with identical field values except for id
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-        // Test that equals returns false
-        Assert.assertFalse("Jobs with different IDs should not be equal", job1.equals(job2));
+    @Test
+    public void testJobsForEquality(){
+        Job job1 = new Job("Product tester", new Employer("ACME"),
+                new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job2 = new Job("Product tester", new Employer("ACME"),
+                new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String msg ="Check two objects are NOT equal with different id's";
+        Assert.assertFalse(msg,job1.equals(job2));
     }
     @Test
-    public void testToStringFormat() {
-        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+    public void testToStringStartsAndEndsWithNewLine(){
+        Job job1 = new Job("Product tester", new Employer("ACME"),
+                new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String newline = System.lineSeparator();
+        Assert.assertTrue(job1.toString().startsWith(newline));
+        Assert.assertTrue(job1.toString().endsWith(newline));
+    }
+    @Test
+    public void testToStringContainsCorrectLabelsAndData(){
+        Job job1 = new Job("Product tester", new Employer("ACME"),
+                new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String newline = System.lineSeparator();
+        String expected = newline +
+                "ID: " + job1.getId() + newline +
+                "Name: " + "Product tester" + newline +
+                "Employer: " + "ACME" + newline +
+                "Location: " + "Desert" + newline +
+                "Position Type: " + "Quality control" + newline +
+                "Core Competency: " + "Persistence" + newline;
+        Assert.assertEquals(expected,job1.toString());
+    }
 
-        String expectedString = "\nID: " + job.getId() +
-                "\nName: Product tester" +
-                "\nEmployer: ACME" +
-                "\nLocation: Desert" +
-                "\nPosition Type: Quality control" +
-                "\nCore Competency: Persistence\n";
-
-        Assert.assertEquals(expectedString, job.toString());
+    // Custom toString, equals, and hashCode methods:
+    @Test
+    public void testToStringHandlesEmptyField(){
+        Job job1 = new Job("Test", new Employer(""),
+                new Location(""), new PositionType(""), new CoreCompetency("Persistence"));
+        String expected = System.lineSeparator()+
+                "ID: " + job1.getId() + System.lineSeparator() +
+                "Name: " + "Test" + System.lineSeparator() +
+                "Employer: " + "Data not available" + System.lineSeparator() +
+                "Location: " + "Data not available" + System.lineSeparator() +
+                "Position Type: " + "Data not available" + System.lineSeparator() +
+                "Core Competency: " + "Persistence" +
+                System.lineSeparator();
+        Assert.assertEquals(expected,job1.toString());
     }
 
 }

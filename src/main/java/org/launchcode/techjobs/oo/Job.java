@@ -41,7 +41,26 @@ public class Job {
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
-
+    @Override
+    public String toString() {
+        String newline = System.getProperty("line.separator");
+        this.name = this.getName() == ""? "Data not available"  : getName();
+        String emp = (employer.getValue()=="") ? "Data not available" :getEmployer().getValue();
+        employer.setValue(emp);
+        String loc = (location.getValue()=="") ? "Data not available" :getLocation().getValue();
+        location.setValue(loc);
+        String pos = (positionType.getValue()=="") ? "Data not available" :getPositionType().getValue();
+        positionType.setValue(pos);
+        String com = (coreCompetency.getValue()=="") ? "Data not available" :getCoreCompetency().getValue();
+        coreCompetency.setValue(com);
+        return newline + "ID: " + getId() +
+                newline + "Name: " + this.name +
+                newline + "Employer: " + employer +
+                newline + "Location: " + location +
+                newline + "Position Type: " + positionType +
+                newline + "Core Competency: " + coreCompetency+
+                newline;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
