@@ -33,9 +33,13 @@ public class JobTest {
                 new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job job2 = new Job("Product tester", new Employer("ACME"),
                 new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        String msg ="Check two objects are NOT equal with different id's";
+        String msg = "Check two objects are NOT equal with different id's";
         Assert.assertFalse(msg,job1.equals(job2));
     }
+
+    /*private void assertFalse(String msg, boolean equals) {
+    }*/
+
     @Test
     public void testToStringStartsAndEndsWithNewLine(){
         Job job1 = new Job("Product tester", new Employer("ACME"),

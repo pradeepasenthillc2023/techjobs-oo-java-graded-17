@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class Location extends JobField{
 
-    private int id;
+    /*private int id;
     private static int nextId = 1;
     private String value;
 
     public Location() {
         id = nextId;
         nextId++;
-    }
+    }*/
 
     // TODO: Add a constructor that takes a string as a parameter and assigns it to the 'value' field. The
     //  constructor should also call the empty constructor in order to initialize the 'id' field.
@@ -20,7 +20,7 @@ public class Location extends JobField{
         super(value);
     }
 
-    public Location(int id) {
+   /* public Location(int id) {
         this();
         this.id = id;
     }
@@ -56,6 +56,6 @@ public class Location extends JobField{
 
     public void setValue(String value) {
         this.value = value;
-    }
+    }*/
 
 }
